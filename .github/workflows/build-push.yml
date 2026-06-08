@@ -53,7 +53,6 @@ jobs:
               -p:PublishTrimmed=true \
               -p:DebugType=None \
               -p:DebugSymbols=false \
-              -p:PublishAot=true \
               -o "publish/$RID"
 
             # Prefix all output files with the RID
