@@ -55,6 +55,12 @@ jobs:
               -p:DebugSymbols=false \
               -o "publish/$RID"
 
+            # Prefix all output files with the RID
+            for file in "publish/$RID"/*; do
+              [ -f "$file" ] || continue
+              mv "$file" "$(dirname "$file")/${RID}-$(basename "$file")"
+            done
+
             ls "publish/$RID"
           done
 
