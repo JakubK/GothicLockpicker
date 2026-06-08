@@ -2,6 +2,11 @@ name: Build and Publish
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 1.0.0)'
+        required: true
+        default: '1.0.0'
 
 jobs:
   build:
@@ -86,3 +91,22 @@ jobs:
           name: osx-arm64
           path: |
             publish/osx-arm64/*
+
+      - name: Create GitHub Release
+        run: |
+          gh release create "v${{ github.event.inputs.version }}" \
+            --title "Gothic Lock Picker v${{ github.event.inputs.version }}" \
+            --notes "Release of Gothic Lock Picker version ${{ github.event.inputs.version }}." \
+            --repo ${{ github.repository }} \
+            --target ${{ github.ref }}
+
+          gh release upload "v${{ github.event.inputs.version }}" \
+            --repo ${{ github.repository }} \
+            --clobber \
+            publish/win-x64/* \
+            publish/win-arm64/* \
+            publish/linux-x64/* \
+            publish/linux-arm64/* \
+            publish/osx-x64/* \
+            publish/osx-arm64/*
+            
