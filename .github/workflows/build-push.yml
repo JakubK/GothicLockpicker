@@ -53,6 +53,7 @@ jobs:
               -p:PublishTrimmed=true \
               -p:DebugType=None \
               -p:DebugSymbols=false \
+              -p:PublishAot=true \
               -o "publish/$RID"
 
             # Prefix all output files with the RID
@@ -63,48 +64,6 @@ jobs:
 
             ls "publish/$RID"
           done
-
-      - name: Upload artifacts (Windows x64)
-        uses: actions/upload-artifact@v4
-        with:
-          name: win-x64
-          path: |
-            publish/win-x64/*
-
-      - name: Upload artifacts (Windows ARM64)
-        uses: actions/upload-artifact@v4
-        with:
-          name: win-arm64
-          path: |
-            publish/win-arm64/*
-
-      - name: Upload artifacts (Linux x64)
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-x64
-          path: |
-            publish/linux-x64/*
-
-      - name: Upload artifacts (Linux ARM64)
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-arm64
-          path: |
-            publish/linux-arm64/*
-
-      - name: Upload artifacts (macOS x64)
-        uses: actions/upload-artifact@v4
-        with:
-          name: osx-x64
-          path: |
-            publish/osx-x64/*
-
-      - name: Upload artifacts (macOS ARM64)
-        uses: actions/upload-artifact@v4
-        with:
-          name: osx-arm64
-          path: |
-            publish/osx-arm64/*
 
       - name: Create GitHub Release
         env:
