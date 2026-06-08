@@ -51,6 +51,8 @@ jobs:
               --self-contained true \
               -p:PublishSingleFile=true \
               -p:PublishTrimmed=true \
+              -p:DebugType=None \
+              -p:DebugSymbols=false \
               -o "publish/$RID"
           done
 
