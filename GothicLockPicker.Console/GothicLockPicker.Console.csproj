@@ -5,16 +5,11 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Version>1.0.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\GothicLockPicker.Core\GothicLockPicker.Core.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Update="CavalornTower.txt">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
     </ItemGroup>
 
 </Project>
