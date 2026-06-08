@@ -1,8 +1,10 @@
+using System.Text;
+
 namespace GothicLockPicker;
 
 public static class BFS
 {
-    public static void Traverse(State startState, string targetShort)
+    public static string Traverse(State startState, string targetShort)
     {
         var visited = new HashSet<string>();
         var parent = new Dictionary<string, string>();
@@ -22,8 +24,7 @@ public static class BFS
 
             if (currentKey == targetShort)
             {
-                PrintPath(currentKey, parent, moveTaken, startState);
-                return;
+                return PrintPath(currentKey, parent, moveTaken, startState); 
             }
 
             foreach (var move in StateGenerator.GetNextMoves(current))
@@ -41,10 +42,10 @@ public static class BFS
             }
         }
 
-        Console.WriteLine("No solution found.");
+        return "No solution found.";
     }
     
-    private static void PrintPath(
+    private static string PrintPath(
         string end,
         Dictionary<string, string> parent,
         Dictionary<string, Move> moveTaken,
@@ -60,8 +61,6 @@ public static class BFS
         }
 
         path.Reverse();
-
-        Console.WriteLine($"Solution in {path.Count} moves:");
 
         var index = 0;
         var debugState = startState.Clone();
@@ -93,19 +92,19 @@ public static class BFS
                     }    
                 }
             }
-            // Console.WriteLine($"{index} Index {m.Index}, Direction {m.Direction} -> {debugState.CurrentStateShort()}");
 
             chars.Add(m.Direction.ToString());
             
             prevWSIndex = m.Index;
         }
-        
+
+        var sb = new StringBuilder();
         for (int i = 0; i < chars.Count; i += 4)
         {
             int count = Math.Min(4, chars.Count - i);
-            Console.WriteLine(string.Join(" ", chars.GetRange(i, count)));
+            sb.AppendLine(string.Join(" ", chars.GetRange(i, count)));
         }
 
-        Console.WriteLine(chars.Count);
+        return sb.ToString();
     }
 }

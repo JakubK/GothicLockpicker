@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="GothicLockPicker/GothicLockPicker.csproj" />
+  <Project Path="GothicLockPicker.Console/GothicLockPicker.Console.csproj" />
+  <Project Path="GothicLockPicker.Core\GothicLockPicker.Core.csproj" />
+  <Project Path="GothicLockPicker.Tests/GothicLockPicker.Tests.csproj" />
 </Solution>
