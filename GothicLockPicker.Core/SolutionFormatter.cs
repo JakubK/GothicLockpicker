@@ -4,6 +4,41 @@ namespace GothicLockPicker;
 
 public static class SolutionFormatter
 {
+    public static string ToCompactString(Solution solution)
+    {
+        var path = new List<Move>();
+        var current = solution.End;
+
+        while (!string.IsNullOrEmpty(solution.Parent[current]))
+        {
+            path.Add(solution.MoveTaken[current]);
+            current = solution.Parent[current];
+        }
+
+        var result = new List<(Move Value, int Count)>();
+        path.Reverse();
+
+        foreach (var move in path)
+        {
+            if (result.Count > 0 && result[^1].Value == move)
+            {
+                result[^1] = (move, result[^1].Count + 1);
+            }
+            else
+            {
+                result.Add((move, 1));
+            }
+        }
+
+        var sb = new StringBuilder();
+        foreach (var (move, count) in result)
+        {
+            sb.AppendLine(move.Index + " " + move.Direction + " x" + count);
+        }
+        return sb.ToString().Trim();
+    }
+    
+    
     public static string ToVerboseString(Solution solution)
     {
         var path = new List<Move>();

@@ -81,3 +81,43 @@ S S S D
 D D
 ```
 
+Alternatively with `--compact` flag it presents the solution in following format for each line:
+
+idOfLatch Move xTimes
+
+So for example above it would be:
+
+```
+2 D x1
+3 A x1
+2 D x1
+3 A x1
+2 D x1
+3 A x3
+4 A x1
+1 D x1
+0 D x1
+4 A x1
+1 D x1
+0 D x1
+4 A x1
+1 D x1
+4 A x1
+1 D x1
+4 A x1
+1 D x1
+4 A x1
+1 D x1
+4 A x1
+1 D x1
+4 A x1
+1 D x1
+4 A x3
+5 D x1
+0 D x1
+5 D x1
+0 D x1
+5 D x1
+0 D x1
+5 D x3
+```
