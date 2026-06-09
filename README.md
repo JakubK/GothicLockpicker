@@ -43,7 +43,7 @@ Solution is always a set of W,A,S,D keys to press to solve the puzzle. Groupped 
 ### Example output
 
 Below you'll find solution for lock to the tower nearby Cavalorn Camp.
-Each line starts with latch Id (starting from topmost latch as 0) and a letters to press while on them.
+Each line contains a letter on keyboard to click including switching latches.
 
 ```
 W W W D
