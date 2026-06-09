@@ -61,49 +61,29 @@ public static class BFS
         }
 
         path.Reverse();
-
-        var index = 0;
-        var debugState = startState.Clone();
-
-        var chars = new List<string>();
-
-        var prevWSIndex = startState.Latches.Count - 1;
+        
+        Move? previousMove = null;
+        var sb = new StringBuilder();
+        var count = 1;
+        
         foreach (var m in path)
         {
-            index++;
-            debugState = StateGenerator.StateFromMove(debugState, m);
-
-            if (prevWSIndex != -1)
+            if (previousMove != null && previousMove.Index == m.Index)
             {
-                if (m.Index > prevWSIndex)
-                {
-                    var diff = m.Index - prevWSIndex;
-                    for (int i = 0; i < diff; i++)
-                    {
-                        chars.Add("S");
-                    }
-                } 
-                else if (m.Index < prevWSIndex)
-                {
-                    var diff = prevWSIndex - m.Index;
-                    for (int i = 0; i < diff; i++)
-                    {
-                        chars.Add("W");
-                    }    
-                }
+                count++;
             }
 
-            chars.Add(m.Direction.ToString());
+            if (previousMove != null && previousMove.Index != m.Index)
+            {
+                var formatCount = new string(previousMove.Direction.ToString()[0], count);
+                sb.AppendLine(previousMove.Index + " " + formatCount);
+                
+                count = 1;
+            }
             
-            prevWSIndex = m.Index;
+            previousMove = m;
         }
 
-        var sb = new StringBuilder();
-        for (int i = 0; i < chars.Count; i += 4)
-        {
-            int count = Math.Min(4, chars.Count - i);
-            sb.AppendLine(string.Join(" ", chars.GetRange(i, count)));
-        }
 
         return sb.ToString();
     }

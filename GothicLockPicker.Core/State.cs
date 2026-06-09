@@ -32,21 +32,7 @@ public class State
         var clone = new State();
         foreach (var latchToClone in Latches)
         {
-            var clonedLatch = new Latch();
-
-            clonedLatch.Size = latchToClone.Size;
-            clonedLatch.State = latchToClone.State;
-            
-            foreach (var neg in latchToClone.NegativeInfluenceLatches)
-            {
-                clonedLatch.NegativeInfluenceLatches.Add(neg);
-            }
-            
-            foreach (var pos in latchToClone.PositiveInfluenceLatches)
-            {
-                clonedLatch.PositiveInfluenceLatches.Add(pos);
-            }
-            
+            var clonedLatch = latchToClone.Clone();
             clone.Latches.Add(clonedLatch);
         }
 
