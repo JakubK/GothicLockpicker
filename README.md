@@ -46,36 +46,38 @@ Below you'll find solution for lock to the tower nearby Cavalorn Camp.
 Each line starts with latch Id (starting from topmost latch as 0) and a letters to press while on them.
 
 ```
-2 D
-3 A
-2 D
-3 A
-2 D
-3 AAA
-4 A
-1 D
-0 D
-4 A
-1 D
-0 D
-4 A
-1 D
-4 A
-1 D
-4 A
-1 D
-4 A
-1 D
-4 A
-1 D
-4 A
-1 D
-4 AAA
-5 D
-0 D
-5 D
-0 D
-5 D
-0 D
+W W W D
+S A W D
+S A W D
+S A A A
+S A W W
+W D W D
+S S S S
+A W W W
+D W D S
+S S S A
+W W W D
+S S S A
+W W W D
+S S S A
+W W W D
+S S S A
+W W W D
+S S S A
+W W W D
+S S S A
+W W W D
+S S S A
+A A S D
+W W W W
+W D S S
+S S S D
+W W W W
+W D S S
+S S S D
+W W W W
+W D S S
+S S S D
+D D
 ```
 
