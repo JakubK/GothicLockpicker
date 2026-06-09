@@ -9,7 +9,7 @@ public class LockPickerTests
         var expectedSolution = await File.ReadAllTextAsync("Solutions/CavalornTower.txt");
         expectedSolution = expectedSolution.Trim();
         
-        var solution = BFS.Traverse(state, state.TargetStateShort()).Trim();
+        var solution = SolutionFormatter.ToVerboseString(Bfs.Traverse(state, state.TargetStateShort())!);
         
         Assert.That(solution == expectedSolution);
     }
@@ -21,7 +21,7 @@ public class LockPickerTests
         var expectedSolution = await File.ReadAllTextAsync("Solutions/YberionChest.txt");
         expectedSolution = expectedSolution.Trim();
         
-        var solution = BFS.Traverse(state, state.TargetStateShort()).Trim();
+        var solution = SolutionFormatter.ToVerboseString(Bfs.Traverse(state, state.TargetStateShort())!);
         
         Assert.That(solution == expectedSolution);
     }
