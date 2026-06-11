@@ -49,4 +49,13 @@ public class LockPickerTests
         
         Assert.That(solution == expectedSolution);
     }
+    
+    [Test]
+    public async Task WhenNoSolution_ReturnsEmpty()
+    {
+        var state = await LockReader.ReadFromFileAsync("Levels/NoSolution.txt");
+        var solution = SolutionFormatter.ToVerboseString(Bfs.Traverse(state, state.TargetStateShort())!);
+        
+        Assert.That(solution == string.Empty);
+    }
 }

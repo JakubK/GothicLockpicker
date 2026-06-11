@@ -4,8 +4,11 @@ namespace GothicLockPicker;
 
 public static class SolutionFormatter
 {
-    public static string ToCompactString(Solution solution)
+    public static string ToCompactString(Solution? solution)
     {
+        if (solution == null)
+            return string.Empty;
+        
         var path = new List<Move>();
         var current = solution.End;
 
@@ -39,8 +42,11 @@ public static class SolutionFormatter
     }
     
     
-    public static string ToVerboseString(Solution solution)
+    public static string ToVerboseString(Solution? solution)
     {
+        if (solution == null)
+            return string.Empty;
+        
         var path = new List<Move>();
         var current = solution.End;
 
